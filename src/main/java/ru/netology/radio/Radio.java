@@ -1,53 +1,58 @@
 package ru.netology.radio;
 
 public class Radio {
-    public int numberStation;
-    public int currentVolume;
+    private int numberStation;
+    private int currentVolume;
 
-    public int increaseVolume() {
-        if (currentVolume < 100 && currentVolume > 0) {
-            currentVolume = currentVolume + 1;
-            return currentVolume;
-        } else {
-            return 100;
-        }
+    public int getNumberStation() {
+        return numberStation;
     }
 
-    public int decreaseVolume() {
-        if (currentVolume < 100 && currentVolume > 0) {
-            currentVolume = currentVolume - 1;
-            return currentVolume;
-        } else {
-            return 0;
-        }
+    public int getCurrentVolume() {
+        return currentVolume;
     }
 
-    public int next() {
-        if (numberStation < 9 && numberStation >= 0) {
-            numberStation = numberStation + 1;
-            return numberStation;
-        } else {
-            return 0;
+
+    public void setIncreaseVolume(int newCurrentVolume) {
+        if (newCurrentVolume == 100) {
+            currentVolume = 100;
+            return;
         }
+        currentVolume = newCurrentVolume + 1;
     }
 
-    public int prev() {
-        if (numberStation <= 9 && numberStation > 0) {
-            numberStation = numberStation - 1;
-            return numberStation;
-        } else {
-            return 9;
+
+    public void setDecreaseVolume(int newCurrentVolume) {
+        if (newCurrentVolume == 0) {
+            currentVolume = 0;
+            return;
         }
+
+        currentVolume = newCurrentVolume - 1;
     }
 
-    public int setNumberStation(int newNumberStation) {
+    public void setNumberStation(int newNumberStation) {
         if (newNumberStation <= 9 && newNumberStation >= 0) {
-            return newNumberStation;
-        } else {
-            return 0;
+            numberStation = newNumberStation;
         }
+        return;
     }
 
+    public void setNextStation(int newNumberStation) {
+        if (newNumberStation == 9) {
+            numberStation = 0;
+            return;
+        }
+        numberStation = newNumberStation + 1;
+    }
+
+    public void setPrevStation(int newNumberStation) {
+        if (newNumberStation == 0) {
+            numberStation = 9;
+            return;
+        }
+        numberStation = newNumberStation - 1;
+    }
 }
 
 
